@@ -5,14 +5,42 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const services = [
-  { icon: Globe, title: "Website Development", desc: "From marketing sites to complex web applications, we build performant, accessible, and SEO-optimized websites using React, Next.js, and modern frameworks.", features: ["Custom web applications", "E-commerce platforms", "Progressive web apps", "CMS integration"] },
-  { icon: Code, title: "Custom Software Development", desc: "Bespoke software solutions tailored to your unique business processes. We handle everything from architecture to deployment.", features: ["Enterprise applications", "API development", "Legacy modernization", "System integration"] },
-  { icon: Smartphone, title: "Mobile App Development", desc: "Native and cross-platform mobile applications for iOS and Android that deliver exceptional user experiences.", features: ["iOS & Android apps", "React Native / Flutter", "App Store optimization", "Push notifications"] },
-  { icon: Brain, title: "AI & Automation", desc: "Harness the power of artificial intelligence to automate workflows, extract insights, and create intelligent products.", features: ["Machine learning models", "NLP & chatbots", "Process automation", "Predictive analytics"] },
-  { icon: Cloud, title: "Cloud & SaaS Development", desc: "Scalable cloud-native architectures and SaaS platforms designed for high availability and rapid growth.", features: ["Cloud migration", "Microservices", "DevOps & CI/CD", "Multi-tenant SaaS"] },
-  { icon: Palette, title: "UI/UX Design", desc: "User-centered design that balances aesthetics with usability to create products people love to use.", features: ["User research", "Wireframing & prototyping", "Design systems", "Usability testing"] },
-  { icon: BarChart3, title: "Digital Marketing", desc: "Data-driven marketing strategies that increase brand visibility, drive traffic, and convert visitors into customers.", features: ["Content strategy", "PPC campaigns", "Social media", "Analytics & reporting"] },
-  { icon: Zap, title: "SEO Optimization", desc: "Technical and content SEO strategies that improve your search rankings and drive organic growth.", features: ["Technical SEO audits", "Keyword research", "On-page optimization", "Link building"] },
+  { 
+    icon: Smartphone, 
+    title: "Mobile App Development", 
+    desc: "Production-grade native and cross-platform mobile applications for iOS and Android engineered with modern architectures, seamless offline sync, and fluid 60fps animations.", 
+    features: ["iOS & Android Apps", "React Native & Flutter", "Offline-First Sync", "App Store & Play Store CI/CD"] 
+  },
+  { 
+    icon: Code, 
+    title: "Custom ERP & CRM Software", 
+    desc: "Bespoke enterprise resource planning (ERP) and customer relationship management (CRM) systems designed around your operational workflows, real-time inventory tracking, and multi-branch logistics.", 
+    features: ["Real-time Inventory Trackers", "Multi-branch Workflow Automation", "GST & Invoicing Engines", "Custom Role-Based Portals"] 
+  },
+  { 
+    icon: Globe, 
+    title: "Custom Software & Modern Websites", 
+    desc: "High-performance web applications and digital platforms built with Next.js, React, and TypeScript. Optimized for sub-second load times, dynamic search indexing, and resilient scaling.", 
+    features: ["Modern Next.js & React Web", "High-Throughput SaaS Platforms", "Interactive Headless E-Commerce", "API & Webhook Integrations"] 
+  },
+  { 
+    icon: Cloud, 
+    title: "Cloud & Backend Infrastructure", 
+    desc: "Scalable cloud-native architectures, low-latency API gateways, and distributed databases designed for 99.99% availability.", 
+    features: ["Node.js & FastAPI Microservices", "PostgreSQL & Redis Caching", "Docker Containerization", "AWS & Cloudflare CDN"] 
+  },
+  { 
+    icon: Brain, 
+    title: "AI & Workflow Automation", 
+    desc: "Automate complex business operations and data processing with integrated agentic LLM pipelines, computer vision, and predictive analytics.", 
+    features: ["Workflow Automations", "Smart OCR & Document Extraction", "Predictive Analytics", "Custom AI Assistants"] 
+  },
+  { 
+    icon: Palette, 
+    title: "UI/UX & Liquid Design Systems", 
+    desc: "User-centered visual systems and interactive design interfaces that elevate brand credibility and drive conversion.", 
+    features: ["Design Systems & Prototypes", "Liquid Glass Aesthetics", "Responsive Mobile Layouts", "Usability Testing"] 
+  },
 ];
 
 const Services = () => {
@@ -22,18 +50,18 @@ const Services = () => {
         <div className="container-tight text-center">
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}>
             <span className="text-sm text-primary font-bold uppercase tracking-[0.2em]">Our Services</span>
-            <h1 className="font-heading text-4xl md:text-7xl font-extrabold mt-4 mb-6 tracking-tight drop-shadow-sm">
+            <h1 className="font-heading text-3xl sm:text-5xl md:text-7xl font-extrabold mt-3 sm:mt-4 mb-4 sm:mb-6 tracking-tight drop-shadow-sm">
               Full-Spectrum <span className="gradient-text">Engineering</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground font-medium max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground font-medium max-w-2xl mx-auto leading-relaxed">
               From concept to scale, we provide the architectural foundation and execution needed to dominate your digital market.
             </p>
           </motion.div>
         </div>
       </section>
 
-      <section className="section-padding pt-8">
-        <div className="container-tight space-y-6">
+      <section className="section-padding pt-6 sm:pt-8">
+        <div className="container-tight space-y-4 sm:space-y-6">
           {services.map((service, i) => (
             <motion.div
               key={service.title}
@@ -41,15 +69,15 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
-              className="glass-card rounded-2xl p-8 md:p-10 border border-border/50 hover:border-primary/40 hover:-translate-y-1 hover:bg-white/[0.02] hover:shadow-glow transition-all duration-500 group"
+              className="glass-card rounded-2xl p-5 sm:p-8 md:p-10 border border-border/50 hover:border-primary/40 hover:-translate-y-1 hover:bg-white/[0.02] hover:shadow-glow transition-all duration-500 group"
             >
-              <div className="flex flex-col md:flex-row gap-8 md:items-start">
-                <div className="flex-shrink-0 h-16 w-16 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-500">
-                  <service.icon className="h-8 w-8 text-primary group-hover:text-accent transition-colors" />
+              <div className="flex flex-col md:flex-row gap-4 sm:gap-8 md:items-start">
+                <div className="flex-shrink-0 h-12 w-12 sm:h-16 sm:w-16 rounded-xl sm:rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-500">
+                  <service.icon className="h-6 w-6 sm:h-8 sm:w-8 text-primary group-hover:text-accent transition-colors" />
                 </div>
                 <div className="flex-1">
-                  <h2 className="font-heading text-2xl font-bold text-foreground mb-3">{service.title}</h2>
-                  <p className="text-muted-foreground mb-6 leading-relaxed text-lg">{service.desc}</p>
+                  <h2 className="font-heading text-xl sm:text-2xl font-bold text-foreground mb-2 sm:mb-3">{service.title}</h2>
+                  <p className="text-muted-foreground mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">{service.desc}</p>
                   <div className="flex flex-wrap gap-2">
                     {service.features.map((f) => (
                       <span key={f} className="text-xs font-semibold rounded-full border border-border/40 bg-secondary/30 px-3 py-1.5 text-muted-foreground group-hover:border-primary/20 transition-colors">

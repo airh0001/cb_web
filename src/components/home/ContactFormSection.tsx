@@ -52,23 +52,23 @@ const ContactFormSection = () => {
   return (
     <section className="section-padding bg-card/50" id="contact">
       <div className="container-tight">
-        <div className="grid md:grid-cols-2 gap-16">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="flex flex-col justify-center"
           >
-            <span className="text-sm text-primary font-bold uppercase tracking-[0.2em] mb-4 block">Contact Us</span>
-            <h2 className="font-heading text-4xl md:text-5xl font-extrabold mb-6 tracking-tight drop-shadow-sm">
+            <span className="text-sm text-primary font-bold uppercase tracking-[0.2em] mb-3 block">Contact Us</span>
+            <h2 className="font-heading text-2xl sm:text-4xl md:text-5xl font-extrabold mb-4 sm:mb-6 tracking-tight drop-shadow-sm">
               Let's Start a <br className="hidden md:block" />
               <span className="gradient-text">Conversation</span>
             </h2>
-            <p className="text-lg text-muted-foreground mb-10 leading-relaxed font-medium">
+            <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-10 leading-relaxed font-medium">
               Have a project in mind? Fill out the form and our team will respond within 24 hours.
             </p>
 
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {[
                 { icon: Mail, text: "Codebytdigital@gmail.com", href: "mailto:Codebytdigital@gmail.com" },
                 { icon: Phone, text: "+91 97184 17771", href: "tel:+919718417771" },
@@ -91,19 +91,19 @@ const ContactFormSection = () => {
             </div>
             
             <div className="mt-8 pt-8 border-t border-border/30">
-              <h3 className="font-heading font-semibold text-foreground mb-4">Want to talk immediately?</h3>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <h3 className="font-heading font-semibold text-foreground mb-4 text-sm sm:text-base">Want to talk immediately?</h3>
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Button 
                   variant="hero" 
                   onClick={() => {
                     console.log('Opening Calendly popup...');
                     openCalendlyPopup('https://calendly.com/mukprabhakar/30min');
                   }}
-                  className="cursor-pointer"
+                  className="cursor-pointer w-full sm:w-auto"
                 >
                   <Calendar size={16} className="mr-2" /> Book a Discovery Call
                 </Button>
-                <Button variant="outline" className="border-green-500/20 text-green-500 hover:bg-green-500/10 hover:text-green-400" asChild>
+                <Button variant="outline" className="border-green-500/20 text-green-500 hover:bg-green-500/10 hover:text-green-400 w-full sm:w-auto" asChild>
                   <a href="https://wa.me/919718417771?text=Hi!%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer">
                     <MessageCircle size={16} className="mr-2" /> WhatsApp Us
                   </a>
@@ -117,7 +117,7 @@ const ContactFormSection = () => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="glass-card rounded-3xl p-8 md:p-10 space-y-6 border border-border/50 shadow-2xl relative overflow-hidden"
+            className="glass-card rounded-3xl p-5 sm:p-8 md:p-10 space-y-4 sm:space-y-6 border border-border/50 shadow-2xl relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10" />
             

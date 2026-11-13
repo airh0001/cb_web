@@ -21,6 +21,75 @@ type CaseStudyData = {
 };
 
 const caseStudies: Record<string, CaseStudyData> = {
+  "unitedtyre": {
+    slug: "unitedtyre",
+    client: "United Tyre Group",
+    title: "United Tyre Complete CRM & Business Tracker",
+    category: "Custom ERP & CRM Software",
+    heroText: "Architecting a Real-Time Business Management and Inventory Tracker for Multi-Branch Tyre Distribution.",
+    about: "United Tyre Group is an established automotive tyre distributor and service provider operating multiple branches and workshops, requiring unified stock accounting, billing, and customer warranty tracking.",
+    metrics: [
+      { value: "100%", label: "Real-Time Stock Accuracy" },
+      { value: "3x", label: "Faster Billing & Checkouts" },
+      { value: "0", label: "Stock Discrepancies" }
+    ],
+    challenge: "Managing thousands of tyre SKUs, tyre sizes, brand variations, warranty periods, and multi-location workshop inventories using disparate spreadsheets led to frequent stockouts, delayed billings, and inaccurate branch transfers.",
+    solution: "We engineered a centralized custom CRM and business tracking software with real-time barcode scanning, automated multi-branch inventory sync, customer warranty lifecycle management, and GST-compliant invoicing powered by React, Node.js, and PostgreSQL.",
+    results: [
+      "Eliminated manual inventory audits through real-time SKU tracking.",
+      "Accelerated checkout and billing speed by 300% across all branches.",
+      "Unified multi-branch transfer workflows with automated dispatch approvals.",
+      "Streamlined customer warranty registration and retread tracking."
+    ],
+    tech: ["React", "Node.js", "PostgreSQL", "Redis", "Tailwind CSS", "Docker"],
+    website: "https://unitedtyre.in/"
+  },
+  "heesab-keetab": {
+    slug: "heesab-keetab",
+    client: "Heesab Keetab",
+    title: "Heesab Keetab Poultry Management App & Cloud ERP",
+    category: "Mobile App & Web ERP",
+    heroText: "Digitalizing Poultry Farm Lifecycles from Feed Calculations to Profit-and-Loss Accounting.",
+    about: "Heesab Keetab is a dedicated poultry management technology platform providing broiler and layer farmers with specialized tools for flock tracking, feed intake, mortality rates, and financial visibility.",
+    metrics: [
+      { value: "50k+", label: "Birds Tracked Daily" },
+      { value: "18%", label: "Feed Cost Optimization" },
+      { value: "99.9%", label: "Cloud Sync Reliability" }
+    ],
+    challenge: "Poultry farmers deal with daily fluctuating mortality, dynamic feed conversion ratios (FCR), and volatile market prices. Traditional record-keeping on paper led to unrecorded feed leakages and inability to project batch profit margins.",
+    solution: "CODEBYT engineered an offline-first cross-platform mobile app (React Native / Flutter) paired with a high-throughput cloud web ERP (Node.js/FastAPI & PostgreSQL). Farmers can log daily mortality, feed intake, and vaccines even with poor rural connectivity, auto-syncing when online.",
+    results: [
+      "Delivered an intuitive, multilingual mobile application tailored for farm floor workers.",
+      "Optimized Feed Conversion Ratio (FCR) tracking, saving farmers up to 18% on feed costs.",
+      "Automated real-time profit and loss calculations per batch.",
+      "Integrated instant PDF batch reports and automated vaccine reminders."
+    ],
+    tech: ["React Native", "Flutter", "Node.js", "FastAPI", "PostgreSQL", "Firebase"],
+    website: "https://heesabkeetab.com/"
+  },
+  "tatva-agro-farms": {
+    slug: "tatva-agro-farms",
+    client: "Tatva Agro Farms",
+    title: "Tatva Agro Farms ERP & Digital Commerce",
+    category: "Custom Software & Modern Web",
+    heroText: "Engineering Precision Agriculture Management and Direct-to-Consumer Distribution.",
+    about: "Tatva Agro Farms is a leading sustainable agri-venture specializing in high-yield button and oyster mushroom cultivation, fresh crop distribution, and organic farming education.",
+    metrics: [
+      { value: "2x", label: "Growth in Direct Sales" },
+      { value: "< 24h", label: "Harvest to Delivery Cycle" },
+      { value: "100%", label: "Batch Traceability" }
+    ],
+    challenge: "Mushrooms are highly perishable crops requiring strict temperature control, precise harvest windows, and immediate supply chain dispatch. Tatva Agro Farms needed an integrated solution connecting farm harvest yields to distribution orders.",
+    solution: "We designed and deployed a full-stack platform featuring a custom farm ERP portal for spawn-to-harvest cycle tracking and a high-performance Next.js web platform for commercial buyers and retail consumers.",
+    results: [
+      "Digitized spawn-to-harvest batches with environmental condition logs.",
+      "Automated distributor dispatch and reduced crop post-harvest waste by 25%.",
+      "Doubled online direct-to-consumer sales through a frictionless, lightning-fast digital storefront.",
+      "Engineered automated invoicing and transport route scheduling."
+    ],
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "PostgreSQL", "AWS"],
+    website: "https://tatvaagrofarms.com/"
+  },
   "oye-college": {
     slug: "oye-college",
     client: "OYe College",
@@ -114,11 +183,11 @@ const CaseStudy = () => {
           </Button>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <span className="text-sm font-bold uppercase tracking-[0.2em] text-primary mb-4 block">Case Study • {data.category}</span>
-            <h1 className="font-heading text-4xl md:text-6xl font-extrabold mb-6 tracking-tight drop-shadow-sm max-w-4xl">
+            <span className="text-sm font-bold uppercase tracking-[0.2em] text-primary mb-3 sm:mb-4 block">Case Study • {data.category}</span>
+            <h1 className="font-heading text-2xl sm:text-4xl md:text-6xl font-extrabold mb-4 sm:mb-6 tracking-tight drop-shadow-sm max-w-4xl">
               {data.title}
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground font-medium max-w-3xl leading-relaxed">
+            <p className="text-base sm:text-xl md:text-2xl text-muted-foreground font-medium max-w-3xl leading-relaxed">
               {data.heroText}
             </p>
           </motion.div>
@@ -126,9 +195,9 @@ const CaseStudy = () => {
       </section>
 
       {/* Metrics Banner */}
-      <section className="py-12 border-b border-border/30 bg-card/30">
+      <section className="py-8 sm:py-12 border-b border-border/30 bg-card/30">
         <div className="container-tight">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
             {data.metrics.map((metric, i) => (
               <motion.div 
                 key={i}
@@ -136,10 +205,10 @@ const CaseStudy = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="text-center md:text-left border-l-2 border-primary/20 pl-6"
+                className="text-center sm:text-left border-l-2 border-primary/20 pl-4 sm:pl-6"
               >
-                <div className="font-heading text-4xl font-bold gradient-text mb-2 drop-shadow-sm">{metric.value}</div>
-                <div className="text-sm uppercase tracking-wider font-semibold text-muted-foreground">{metric.label}</div>
+                <div className="font-heading text-3xl sm:text-4xl font-bold gradient-text mb-1 sm:mb-2 drop-shadow-sm">{metric.value}</div>
+                <div className="text-xs sm:text-sm uppercase tracking-wider font-semibold text-muted-foreground">{metric.label}</div>
               </motion.div>
             ))}
           </div>
@@ -149,7 +218,7 @@ const CaseStudy = () => {
       {/* Main Content */}
       <section className="section-padding">
         <div className="container-tight">
-          <div className="grid lg:grid-cols-[2fr_1fr] gap-16">
+          <div className="grid lg:grid-cols-[2fr_1fr] gap-10 lg:gap-16">
             
             <div className="space-y-16">
               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>

@@ -43,3 +43,6 @@ test-results/
 
 # Netlify
 .netlify/
+
+# Scratch & Temporary
+scratch/

@@ -23,12 +23,12 @@ const About = () => {
         <div className="container-tight text-center">
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}>
             <span className="text-sm text-primary font-bold uppercase tracking-[0.2em]">Our Story</span>
-            <h1 className="font-heading text-4xl md:text-7xl font-extrabold mt-4 mb-6 tracking-tight drop-shadow-sm">
+            <h1 className="font-heading text-3xl sm:text-5xl md:text-7xl font-extrabold mt-3 sm:mt-4 mb-4 sm:mb-6 tracking-tight drop-shadow-sm">
               Building the Future of <br className="hidden md:block" />
               <span className="gradient-text">Digital Innovation</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-medium">
-              Founded in 2011, CODEBYT has grown from a specialized engineering team into a full-service technology powerhouse, trusted by ambitious startups and global enterprises.
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-medium">
+              CODEBYT has grown from a specialized engineering team into a full-service technology powerhouse, trusted by ambitious startups and global enterprises.
             </p>
           </motion.div>
         </div>
@@ -53,7 +53,7 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="glass-card rounded-2xl p-8 text-center border border-border/50 hover:border-primary/40 hover:-translate-y-1 hover:shadow-glow transition-all duration-500 group"
+                className="glass-card rounded-2xl p-5 sm:p-8 text-center border border-border/50 hover:border-primary/40 hover:-translate-y-1 hover:shadow-glow transition-all duration-500 group"
               >
                 <div className="mx-auto h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500">
                   <v.icon className="h-7 w-7 text-primary group-hover:text-accent transition-colors" />
@@ -85,7 +85,7 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="glass-card rounded-2xl p-8 text-center hover:bg-white/[0.02] border border-border/50 hover:border-primary/40 hover:-translate-y-1 hover:shadow-glow transition-all duration-500 group"
+                className="glass-card rounded-2xl p-5 sm:p-8 text-center hover:bg-white/[0.02] border border-border/50 hover:border-primary/40 hover:-translate-y-1 hover:shadow-glow transition-all duration-500 group"
               >
                 <div className="h-20 w-20 rounded-full mx-auto mb-6 overflow-hidden group-hover:scale-110 transition-all duration-500">
                   <img

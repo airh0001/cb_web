@@ -1,60 +1,57 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Globe, Server, Database, Sparkles, RefreshCw } from "lucide-react";
+import { Globe, Server, Smartphone, Sparkles, RefreshCw } from "lucide-react";
 
 const categories = [
   {
-    id: "frontend",
-    name: "Frontend Development",
-    shortName: "Frontend Stacks",
+    id: "mobile",
+    name: "Mobile App Development",
+    shortName: "Mobile Apps",
     themeColor: "orange",
-    icon: Globe,
+    icon: Smartphone,
     gradient: "from-orange-500 via-amber-500 to-yellow-500",
-    shadow: "shadow-[0_0_35px_rgba(249,115,22,0.15)]",
+    shadow: "shadow-[0_0_35px_rgba(249,115,22,0.18)]",
     technologies: [
-      { name: "React", color: "#61DAFB" },
-      { name: "Next.js", color: "#ffffff" },
-      { name: "TypeScript", color: "#3178C6" },
-      { name: "Tailwind CSS", color: "#06B6D4" },
-      { name: "HTML5", color: "#E34F26" },
-      { name: "CSS3", color: "#1572B6" },
+      { name: "React Native", color: "#61DAFB" },
+      { name: "Flutter SDK", color: "#02569B" },
+      { name: "Swift / iOS", color: "#F05138" },
+      { name: "Kotlin / Android", color: "#7F52FF" },
+      { name: "Expo Ecosystem", color: "#ffffff" },
+      { name: "Firebase & APNs", color: "#FFCA28" },
     ],
   },
   {
-    id: "backend",
-    name: "Backend & Core Engines",
-    shortName: "Backend Stacks",
+    id: "erp",
+    name: "Custom ERP & Business Software",
+    shortName: "Custom ERP & Software",
     themeColor: "violet",
     icon: Server,
     gradient: "from-violet-500 via-primary to-pink-500",
-    shadow: "shadow-[0_0_35px_rgba(139,92,246,0.15)]",
+    shadow: "shadow-[0_0_35px_rgba(139,92,246,0.18)]",
     technologies: [
-      { name: "Node.js", color: "#339933" },
-      { name: "Python", color: "#3776AB" },
+      { name: "Node.js & NestJS", color: "#339933" },
+      { name: "Python & FastAPI", color: "#3776AB" },
       { name: "PostgreSQL", color: "#336791" },
-      { name: "Redis", color: "#DC382D" },
-      { name: "GraphQL", color: "#E10098" },
-      { name: "REST APIs", color: "#FF6C37" },
+      { name: "Redis Caching", color: "#DC382D" },
+      { name: "Docker & Microservices", color: "#2496ED" },
+      { name: "GraphQL & REST", color: "#E10098" },
     ],
   },
   {
-    id: "rest",
-    name: "Specialized Tech Stacks",
-    shortName: "Specialized Stacks",
+    id: "web",
+    name: "High-Performance Websites",
+    shortName: "Custom Websites",
     themeColor: "cyan",
-    icon: Database,
+    icon: Globe,
     gradient: "from-cyan-400 via-sky-500 to-blue-500",
-    shadow: "shadow-[0_0_35px_rgba(6,182,212,0.15)]",
+    shadow: "shadow-[0_0_35px_rgba(6,182,212,0.18)]",
     technologies: [
-      { name: "AWS Cloud", color: "#FF9900" },
-      { name: "Docker", color: "#2496ED" },
-      { name: "Kubernetes", color: "#326CE5" },
-      { name: "TensorFlow", color: "#FF6F00" },
-      { name: "PyTorch", color: "#EE4C2C" },
-      { name: "OpenAI API", color: "#ffffff" },
-      { name: "React Native", color: "#61DAFB" },
-      { name: "Flutter SDK", color: "#02569B" },
-      { name: "Figma UI/UX", color: "#F24E1E" },
+      { name: "Next.js", color: "#ffffff" },
+      { name: "React", color: "#61DAFB" },
+      { name: "TypeScript", color: "#3178C6" },
+      { name: "Tailwind CSS", color: "#06B6D4" },
+      { name: "Vite Engine", color: "#646CFF" },
+      { name: "AWS & Cloudflare", color: "#FF9900" },
     ],
   },
 ];
@@ -82,18 +79,15 @@ const TechStackSection = () => {
 
   const getParentBubblePosition = (catId: string) => {
     if (activeCategory === null) {
-      // Idle state: spaced side-by-side or stacked on mobile
-      if (catId === "frontend") return { x: isMobile ? 0 : -250, y: isMobile ? -140 : 0, scale: 1, opacity: 1 };
-      if (catId === "backend") return { x: 0, y: 0, scale: 1, opacity: 1 };
-      if (catId === "rest") return { x: isMobile ? 0 : 250, y: isMobile ? 140 : 0, scale: 1, opacity: 1 };
+      if (catId === "mobile") return { x: isMobile ? 0 : -250, y: isMobile ? -140 : 0, scale: 1, opacity: 1 };
+      if (catId === "erp") return { x: 0, y: 0, scale: 1, opacity: 1 };
+      if (catId === "web") return { x: isMobile ? 0 : 250, y: isMobile ? 140 : 0, scale: 1, opacity: 1 };
     }
 
     if (activeCategory === catId) {
-      // Active parent: centered in the view
       return { x: 0, y: isMobile ? 30 : 0, scale: 1.15, opacity: 1 };
     }
 
-    // Inactive sibling positions (moved to top corners as mini controls)
     const siblings = categories.filter((c) => c.id !== activeCategory);
     const sibIndex = siblings.findIndex((c) => c.id === catId);
 
@@ -108,14 +102,6 @@ const TechStackSection = () => {
     return categories.find((c) => c.id === activeCategory)?.technologies || [];
   };
 
-  const getActiveCategoryColor = () => {
-    const active = categories.find((c) => c.id === activeCategory);
-    if (!active) return "text-primary";
-    if (active.themeColor === "orange") return "text-orange-400";
-    if (active.themeColor === "violet") return "text-violet-400";
-    return "text-cyan-400";
-  };
-
   return (
     <section className="section-padding bg-gradient-to-b from-background to-card/30 overflow-hidden relative">
       {/* Background ambient lighting */}
@@ -128,17 +114,17 @@ const TechStackSection = () => {
           viewport={{ once: true }}
           className="text-center mb-8"
         >
-          <span className="text-sm text-primary font-medium uppercase tracking-wider">Our Expertise</span>
+          <span className="text-sm text-primary font-medium uppercase tracking-wider">Our Core Capabilities</span>
           <h2 className="font-heading text-3xl md:text-5xl font-bold mt-3 mb-4">
             Technologies We <span className="bg-gradient-to-r from-orange-400 to-primary bg-clip-text text-transparent filter drop-shadow-[0_0_15px_rgba(249,115,22,0.1)]">Master</span>
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Click on any stack domain to execute a secure query and expand its component sub-bubbles in real-time.
+            We build mobile apps, custom ERP/CRM trackers, and high-performance software websites using industry-leading modern architectures.
           </p>
         </motion.div>
 
-        {/* Dynamic status/help tooltip */}
-        <div className="text-center mb-6 h-6 flex items-center justify-center font-mono text-[10px] sm:text-xs text-muted-foreground/60 tracking-wider">
+        {/* Dynamic status/help tooltip (Desktop only) */}
+        <div className="hidden md:flex text-center mb-6 h-6 items-center justify-center font-mono text-[10px] sm:text-xs text-muted-foreground/60 tracking-wider">
           <AnimatePresence mode="wait">
             {activeCategory ? (
               <motion.button
@@ -167,8 +153,90 @@ const TechStackSection = () => {
           </AnimatePresence>
         </div>
 
-        {/* Interactive Bubble Solar System */}
-        <div className="relative w-full h-[520px] md:h-[580px] flex items-center justify-center select-none overflow-visible">
+        {/* ========================================================= */}
+        {/* MOBILE VIEW (< md): Touch-Friendly Segmented Glass Deck   */}
+        {/* ========================================================= */}
+        <div className="md:hidden flex flex-col gap-5 mt-2">
+          {/* Segment Selector */}
+          <div className="flex p-1.5 rounded-2xl border border-white/10 bg-card/60 backdrop-blur-xl gap-1">
+            {categories.map((cat) => {
+              const isSelected = (activeCategory || "mobile") === cat.id;
+              const Icon = cat.icon;
+              return (
+                <button
+                  key={cat.id}
+                  type="button"
+                  onClick={() => setActiveCategory(cat.id)}
+                  className={`flex-1 py-2.5 px-2 rounded-xl text-xs font-semibold flex flex-col items-center gap-1 transition-all duration-300 relative cursor-pointer ${
+                    isSelected
+                      ? "text-white shadow-lg"
+                      : "text-muted-foreground hover:text-white"
+                  }`}
+                >
+                  {isSelected && (
+                    <motion.div
+                      layoutId="activeMobileTechTab"
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                      className="absolute inset-0 rounded-xl border border-white/20 bg-gradient-to-br from-primary/30 to-accent/20 backdrop-blur-md"
+                    />
+                  )}
+                  <Icon size={16} className={`relative z-10 ${isSelected ? "text-primary" : ""}`} />
+                  <span className="relative z-10 font-heading text-[11px] leading-tight text-center">{cat.shortName}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Active Domain Card */}
+          {(() => {
+            const current = categories.find((c) => c.id === (activeCategory || "mobile"))!;
+            const Icon = current.icon;
+
+            return (
+              <motion.div
+                key={current.id}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25 }}
+                className="glass-card rounded-3xl p-5 border border-white/15 shadow-xl relative overflow-hidden"
+              >
+                <div className="flex items-center gap-3.5 mb-4 pb-4 border-b border-white/10">
+                  <div className="h-11 w-11 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
+                    <Icon size={22} className="text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-heading text-base font-bold text-foreground">
+                      {current.name}
+                    </h3>
+                    <p className="text-[11px] text-muted-foreground font-mono">
+                      Production Engineering Stack
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2">
+                  {current.technologies.map((tech) => (
+                    <div
+                      key={tech.name}
+                      className="flex items-center gap-2 p-2.5 rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-md text-xs font-medium text-foreground/90 shadow-sm"
+                    >
+                      <div
+                        className="w-2.5 h-2.5 rounded-full flex-shrink-0 shadow-[0_0_6px_rgba(255,255,255,0.4)]"
+                        style={{ backgroundColor: tech.color }}
+                      />
+                      <span className="truncate">{tech.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            );
+          })()}
+        </div>
+
+        {/* ========================================================= */}
+        {/* DESKTOP VIEW (>= md): Interactive Bubble Solar System      */}
+        {/* ========================================================= */}
+        <div className="hidden md:flex relative w-full h-[520px] md:h-[580px] items-center justify-center select-none overflow-visible">
           
           {/* Orbital grid lines (visible only when active) */}
           <AnimatePresence>
@@ -190,7 +258,6 @@ const TechStackSection = () => {
                   const techCount = getActiveTechs().length;
                   const angle = (index * 2 * Math.PI) / techCount;
                   
-                  // Adjust radius based on counts and screen sizes
                   const baseRadius = isMobile ? 120 : 180;
                   const targetX = Math.cos(angle) * baseRadius;
                   const targetY = Math.sin(angle) * baseRadius;
@@ -201,7 +268,6 @@ const TechStackSection = () => {
                       initial={{ x: 0, y: 0, scale: 0, opacity: 0 }}
                       animate={{
                         x: targetX,
-                        // Apply a gentle floating y offset to create drifting sub-bubbles
                         y: [targetY - 5, targetY + 5, targetY - 5],
                         scale: 1,
                         opacity: 1,
@@ -213,7 +279,6 @@ const TechStackSection = () => {
                         damping: 14,
                         x: { delay: index * 0.04 },
                         y: {
-                          // Drifting float animation looping
                           repeat: Infinity,
                           duration: 3 + (index % 3),
                           ease: "easeInOut",
@@ -221,7 +286,7 @@ const TechStackSection = () => {
                       }}
                       className="absolute z-30 pointer-events-auto cursor-default"
                     >
-                      <div className="glass-card rounded-full px-4 py-2 border border-white/10 hover:border-white/30 backdrop-blur-md shadow-lg flex items-center gap-2 whitespace-nowrap text-xs md:text-sm font-semibold select-none group transition-all duration-300 hover:scale-105">
+                      <div className="liquid-glass rounded-full px-4 py-2 border border-white/15 hover:border-white/35 backdrop-blur-xl shadow-lg flex items-center gap-2 whitespace-nowrap text-xs md:text-sm font-semibold select-none group transition-all duration-300 hover:scale-105">
                         <div
                           className="w-2 md:w-2.5 h-2 md:h-2.5 rounded-full filter drop-shadow-[0_0_4px_rgba(255,255,255,0.5)]"
                           style={{ backgroundColor: tech.color }}
@@ -242,7 +307,6 @@ const TechStackSection = () => {
             const pos = getParentBubblePosition(category.id);
             const IconComponent = category.icon;
             const isActive = activeCategory === category.id;
-            const isDimmed = activeCategory !== null && !isActive;
 
             return (
               <motion.div
@@ -266,36 +330,32 @@ const TechStackSection = () => {
                 <motion.div
                   animate={
                     !activeCategory 
-                      ? { y: [0, -10, 0] } // Floating only when idle
+                      ? { y: [0, -10, 0] }
                       : { y: 0 }
                   }
                   transition={{
                     repeat: Infinity,
-                    duration: 4 + (category.id === "frontend" ? 0 : category.id === "backend" ? 1 : 2),
+                    duration: 4 + (category.id === "mobile" ? 0 : category.id === "erp" ? 1 : 2),
                     ease: "easeInOut",
                   }}
-                  className={`w-32 h-32 md:w-44 md:h-44 rounded-full border border-white/10 bg-[#09090b]/40 backdrop-blur-md flex flex-col items-center justify-center p-4 text-center select-none transition-all duration-300 hover:border-white/30 relative overflow-hidden group`}
+                  className={`w-36 h-36 md:w-48 md:h-48 rounded-full border border-white/15 bg-[#09090b]/50 backdrop-blur-xl flex flex-col items-center justify-center p-4 text-center select-none transition-all duration-300 hover:border-white/35 relative overflow-hidden group shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.25)]`}
                   style={{
                     borderColor: isActive ? (category.themeColor === "orange" ? "#f97316" : category.themeColor === "violet" ? "#8b5cf6" : "#06b6d4") : "",
                   }}
                 >
-                  {/* Subtle inner animated ring indicator */}
-                  <div className={`absolute inset-2 rounded-full border border-dashed border-white/5 opacity-50 ${isActive ? "animate-[spin_20s_linear_infinite]" : "group-hover:animate-[spin_30s_linear_infinite]"}`} />
+                  <div className={`absolute inset-2 rounded-full border border-dashed border-white/10 opacity-60 ${isActive ? "animate-[spin_20s_linear_infinite]" : "group-hover:animate-[spin_30s_linear_infinite]"}`} />
                   
-                  {/* Icon */}
                   <IconComponent 
-                    className={`h-8 w-8 md:h-12 md:w-12 mb-3 transition-transform duration-300 group-hover:scale-110`} 
+                    className={`h-8 w-8 md:h-12 md:w-12 mb-2 transition-transform duration-300 group-hover:scale-110`} 
                     style={{
                       color: category.themeColor === "orange" ? "#f97316" : category.themeColor === "violet" ? "#8b5cf6" : "#06b6d4"
                     }}
                   />
                   
-                  {/* Title */}
                   <h3 className="font-heading text-xs md:text-sm font-bold text-foreground">
                     {category.shortName}
                   </h3>
 
-                  {/* Context Helper Text */}
                   <p className="hidden md:block absolute bottom-4 text-[9px] font-mono text-muted-foreground/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     {isActive ? "CLOSE CORE" : "DECRYPT STACK"}
                   </p>

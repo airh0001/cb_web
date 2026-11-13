@@ -7,6 +7,30 @@ import { ArrowRight } from "lucide-react";
 
 const clients = [
   { 
+    name: "United Tyre Group", 
+    industry: "Automotive & Retail ERP", 
+    desc: "Complete custom CRM and real-time inventory tracking software for multi-branch tyre distribution, billing, and automated workshop operations.", 
+    logo: "/clients/unitedtyre.png",
+    website: "https://unitedtyre.in/",
+    results: ["100% Stock Accuracy", "Multi-branch CRM", "Real-time Tracker"] 
+  },
+  { 
+    name: "Heesab Keetab", 
+    industry: "Poultry ERP & Mobile App", 
+    desc: "Comprehensive poultry farm management suite featuring cross-platform mobile apps and cloud ERP for flock tracking, feed metrics, and automated accounting.", 
+    logo: "/clients/heesabkeetab.png",
+    website: "https://heesabkeetab.com/",
+    results: ["Cross-Platform Mobile App", "Batch & Feed Tracker", "Automated P&L"] 
+  },
+  { 
+    name: "Tatva Agro Farms", 
+    industry: "AgriTech & D2C Commerce", 
+    desc: "End-to-end agro farm management platform, harvest-to-dispatch tracking, and modern digital commerce for fresh mushroom cultivation and distribution.", 
+    logo: "/clients/tatvaagrofarms.png",
+    website: "https://tatvaagrofarms.com/",
+    results: ["End-to-End Tracking", "B2B & D2C Portal", "Zero Paperwork"] 
+  },
+  { 
     name: "OYe College", 
     industry: "Education Technology", 
     desc: "Innovative online learning platform connecting students with quality education across India", 
@@ -41,13 +65,34 @@ const clients = [
 ];
 
 const stats = [
-  { icon: Users, value: "5+", label: "Happy Clients" },
-  { icon: Globe, value: "1+", label: "Countries Served" },
-  { icon: Award, value: "98%", label: "Client Retention" },
+  { icon: Users, value: "15+", label: "Enterprise Clients" },
+  { icon: Globe, value: "5+", label: "Industry Verticals" },
+  { icon: Award, value: "99%", label: "Client Retention" },
   { icon: TrendingUp, value: "10M+", label: "Users Impacted" },
 ];
 
 const testimonials = [
+  {
+    quote: "CODEBYT engineered a complete CRM and tracker software for United Tyre that completely streamlined our inventory, multi-branch billing, and tyre tracking. Our operational efficiency jumped 200%.",
+    name: "Executive Director",
+    role: "Leadership, United Tyre Group",
+    stars: 5,
+    company: "United Tyre Group",
+  },
+  {
+    quote: "Heesab Keetab's mobile app and cloud ERP transformed how poultry farmers manage batches, feed costs, and profits. CODEBYT's architecture is rock-solid, ultra-fast, and intuitive for our users.",
+    name: "Product Head",
+    role: "Founder, Heesab Keetab",
+    stars: 5,
+    company: "Heesab Keetab",
+  },
+  {
+    quote: "Our farm management system and modern web platform built by CODEBYT has significantly scaled our direct-to-consumer reach and fresh mushroom distribution.",
+    name: "Operations Lead",
+    role: "Co-Founder, Tatva Agro Farms",
+    stars: 5,
+    company: "Tatva Agro Farms",
+  },
   {
     quote: "CODEBYT built an exceptional online learning platform for us. Student engagement increased by 200% and we now serve over 10,000 students across India.",
     name: "Shivam Gupta",
@@ -79,20 +124,20 @@ const Client = () => {
         <div className="container-tight text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <span className="text-sm text-primary font-medium uppercase tracking-wider">Our Clients</span>
-            <h1 className="font-heading text-4xl md:text-6xl font-bold mt-3 mb-6">
+            <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl font-bold mt-3 mb-4 sm:mb-6">
               Trusted by <span className="gradient-text">Industry Leaders</span>
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              From ambitious startups to Fortune 500 companies, we partner with organizations that demand excellence.
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+              From ambitious startups to high-growth enterprises, we partner with organizations that demand excellence.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Stats */}
-      <section className="section-padding pt-8 bg-card/50">
+      <section className="section-padding pt-6 sm:pt-8 bg-card/50">
         <div className="container-tight">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
             {stats.map((stat, i) => (
               <motion.div
                 key={stat.label}
@@ -100,13 +145,13 @@ const Client = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="text-center p-6"
+                className="text-center p-3 sm:p-6 rounded-2xl border border-white/5 bg-white/[0.02]"
               >
-                <div className="mx-auto h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                  <stat.icon className="h-6 w-6 text-primary" />
+                <div className="mx-auto h-10 w-10 sm:h-12 sm:w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-3 sm:mb-4">
+                  <stat.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                 </div>
-                <div className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-1">{stat.value}</div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
+                <div className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-1">{stat.value}</div>
+                <div className="text-xs sm:text-sm text-muted-foreground">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -120,11 +165,11 @@ const Client = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="font-heading text-3xl md:text-4xl font-bold text-center mb-12"
+            className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12"
           >
             Featured <span className="gradient-text">Clients</span>
           </motion.h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {clients.map((client, i) => (
               <motion.div
                 key={client.name}
@@ -132,7 +177,7 @@ const Client = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="glass-card rounded-xl p-6 group hover:border-primary/30 transition-all"
+                className="glass-card rounded-2xl p-5 sm:p-6 group hover:border-primary/30 transition-all"
               >
                 <div className="flex items-center gap-4 mb-4">
                   <a href={client.website} target="_blank" rel="noopener noreferrer" className="h-14 w-14 rounded-xl bg-white flex items-center justify-center overflow-hidden hover:opacity-90 transition-opacity">
@@ -175,11 +220,11 @@ const Client = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="font-heading text-3xl md:text-4xl font-bold text-center mb-12"
+            className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12"
           >
             What Our <span className="gradient-text">Clients Say</span>
           </motion.h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-5 sm:gap-6">
             {testimonials.map((testimonial, i) => (
               <motion.div
                 key={testimonial.name}
@@ -187,7 +232,7 @@ const Client = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="glass-card rounded-2xl p-8 flex flex-col h-full border border-border/50 hover:border-primary/40 hover:-translate-y-1 hover:shadow-glow relative overflow-hidden group transition-all duration-500"
+                className="glass-card rounded-2xl p-5 sm:p-8 flex flex-col h-full border border-border/50 hover:border-primary/40 hover:-translate-y-1 hover:shadow-glow relative overflow-hidden group transition-all duration-500"
               >
                 <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                   <Star size={64} className="fill-primary text-primary" />
